@@ -43,7 +43,7 @@ int main(void)
     printf("\n");
 
     // 出席番号順で並べ替え、名簿を表示する
-    printf("== 出席番号順の名簿 ==");
+    printf("== 出席番号順の名簿 ==\n");
     sort_all_students_by_id();
     print_all_students();
     printf("\n");
@@ -144,7 +144,7 @@ void sort_all_students_by_total(void)
         struct student *sp1 = &all_students[i];
         for (int j = i + 1; j < student_size; j++) {
             struct student *sp2 = &all_students[j];
-            if (sp1->total > sp2->total) {
+            if (sp1->total < sp2->total) {
                 struct student s = *sp1;
                 *sp1 = *sp2;
                 *sp2 = s;
@@ -204,7 +204,7 @@ void print_stat(void)
             if (max[i] < sp->ten[i]) {
                 max[i] = sp->ten[i];
             }
-            if (min[i] < sp->ten[i]) {
+            if (min[i] > sp->ten[i]) {
                 min[i] = sp->ten[i];
             }
             ten[i] += sp->ten[i];
@@ -214,7 +214,7 @@ void print_stat(void)
 
     // 結果の出力
     for (int i = 0; i < MAX_TEN; i++) {
-        printf("教科 %d", i + 1);
+        printf("教科 %d ", i + 1);
         printf("最高点 %3d", max[i]);
         printf("最低点 %3d", min[i]);
         printf("平均点 %0.1f\n", ten[i] / student_size);
