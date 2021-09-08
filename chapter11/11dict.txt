@@ -1,0 +1,5 @@
+dictionary 辞書
+English 英語
+foreign 外国の
+home 家
+end 終了
